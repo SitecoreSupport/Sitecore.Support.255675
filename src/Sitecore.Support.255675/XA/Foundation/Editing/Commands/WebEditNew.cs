@@ -13,7 +13,10 @@
         {
             if (newItem.Visualization.Layout == null || !MainUtil.GetBool(parameters["navigate"], true))
             {
-              SheerResponse.Eval("window.top.location.reload(true)");
+                #region sitecore.support.255675  
+                //SheerResponse.Eval("window.top.location.reload(true)");
+                SheerResponse.Eval("if (window.top.location.href.includes(\"sc_mode=edit\") == true) {window.top.location.reload();} else {window.parent.location.reload(true)}");
+                #endregion sitecore.support.255675  
                 return;
             }
             UrlOptions defaultOptions = UrlOptions.DefaultOptions;
